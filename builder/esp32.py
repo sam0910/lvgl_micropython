@@ -109,10 +109,10 @@ class Partition:
         if not os.path.exists(f'{SCRIPT_DIR}/build'):
             os.mkdir(f'{SCRIPT_DIR}/build')
 
-        with open(self.save_file_path, 'w') as f:
-            f.write(PARTITION_HEADER)
-            f.write('\n'.join(data))
-            f.write('\n')
+        # with open(self.save_file_path, 'w') as f:
+        #     f.write(PARTITION_HEADER)
+        #     f.write('\n'.join(data))
+        #     f.write('\n')
 
 
 def get_espidf():

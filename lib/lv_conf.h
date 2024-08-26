@@ -29,7 +29,7 @@
     #define MICROPY_CACHE_SIZE  0
 #endif
 #ifndef MICROPY_COLOR_DEPTH
-    #define MICROPY_COLOR_DEPTH  32
+    #define MICROPY_COLOR_DEPTH  16
 #endif
 #ifndef MICROPY_FLOAT
     #define MICROPY_FLOAT  0
