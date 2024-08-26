@@ -1,51 +1,51 @@
 from typing import Union, ClassVar, Callable, List, Any, TypedDict, Optional
 
 
-draw_sw_mask_res_t = int
-indev_state_t = int
-thread_prio_t = int
-group_refocus_policy_t = int
-text_align_t = int
-indev_mode_t = int
-align_t = int
-font_kerning_t = int
 span_overflow_t = int
-text_decor_t = int
-text_flag_t = int
-border_side_t = int
-flex_flow_t = int
-state_t = int
-indev_type_t = int
-part_t = int
-style_res_t = int
-opa_t = int
-base_dir_t = int
-display_render_mode_t = int
-result_t = int
-scrollbar_mode_t = int
-scroll_snap_t = int
-grad_dir_t = int
-fs_res_t = int
-flex_align_t = int
-draw_sw_mask_line_side_t = int
 palette_t = int
-cover_res_t = int
-dir_t = int
-display_rotation_t = int
-span_mode_t = int
+style_res_t = int
+scroll_snap_t = int
+indev_mode_t = int
 font_glyph_format_t = int
-draw_task_type_t = int
-color_format_t = int
-blend_mode_t = int
-type_t = int
-grid_align_t = int
-gridnav_ctrl_t = int
-fs_mode_t = int
-mode_t = int
-flags_t = int
+dir_t = int
+fs_res_t = int
 rb_color_t = int
+indev_state_t = int
+flex_flow_t = int
+opa_t = int
+draw_task_type_t = int
 flag_t = int
+indev_type_t = int
+display_rotation_t = int
+grad_dir_t = int
+draw_sw_mask_res_t = int
+result_t = int
+gridnav_ctrl_t = int
+display_render_mode_t = int
 ctrl_t = int
+fs_mode_t = int
+text_decor_t = int
+grid_align_t = int
+group_refocus_policy_t = int
+base_dir_t = int
+text_align_t = int
+align_t = int
+border_side_t = int
+type_t = int
+font_kerning_t = int
+cover_res_t = int
+state_t = int
+color_format_t = int
+part_t = int
+flags_t = int
+thread_prio_t = int
+blend_mode_t = int
+flex_align_t = int
+text_flag_t = int
+draw_sw_mask_line_side_t = int
+scrollbar_mode_t = int
+mode_t = int
+span_mode_t = int
 style_prop_t = int
 grad_color_t = int
 event_code_t = int
@@ -999,67 +999,39 @@ class SYMBOL(object):
     """
     No Docstrings Yet
     """
-    BULLET: ClassVar[int] = ...
-    AUDIO: ClassVar[int] = ...
-    VIDEO: ClassVar[int] = ...
-    LIST: ClassVar[int] = ...
+    LOCK: ClassVar[int] = ...
+    LOCK_OPEN: ClassVar[int] = ...
+    PLANE_XMARK: ClassVar[int] = ...
+    PLANE_CHECK: ClassVar[int] = ...
+    ROTATE: ClassVar[int] = ...
+    STAR: ClassVar[int] = ...
     OK: ClassVar[int] = ...
     CLOSE: ClassVar[int] = ...
     POWER: ClassVar[int] = ...
     SETTINGS: ClassVar[int] = ...
-    HOME: ClassVar[int] = ...
-    DOWNLOAD: ClassVar[int] = ...
-    DRIVE: ClassVar[int] = ...
     REFRESH: ClassVar[int] = ...
-    MUTE: ClassVar[int] = ...
-    VOLUME_MID: ClassVar[int] = ...
-    VOLUME_MAX: ClassVar[int] = ...
-    IMAGE: ClassVar[int] = ...
-    TINT: ClassVar[int] = ...
-    PREV: ClassVar[int] = ...
-    PLAY: ClassVar[int] = ...
-    PAUSE: ClassVar[int] = ...
-    STOP: ClassVar[int] = ...
-    NEXT: ClassVar[int] = ...
-    EJECT: ClassVar[int] = ...
+    DROPLET: ClassVar[int] = ...
     LEFT: ClassVar[int] = ...
     RIGHT: ClassVar[int] = ...
-    PLUS: ClassVar[int] = ...
-    MINUS: ClassVar[int] = ...
     EYE_OPEN: ClassVar[int] = ...
     EYE_CLOSE: ClassVar[int] = ...
     WARNING: ClassVar[int] = ...
-    SHUFFLE: ClassVar[int] = ...
     UP: ClassVar[int] = ...
     DOWN: ClassVar[int] = ...
-    LOOP: ClassVar[int] = ...
-    DIRECTORY: ClassVar[int] = ...
-    UPLOAD: ClassVar[int] = ...
-    CALL: ClassVar[int] = ...
-    CUT: ClassVar[int] = ...
-    COPY: ClassVar[int] = ...
-    SAVE: ClassVar[int] = ...
-    BARS: ClassVar[int] = ...
-    ENVELOPE: ClassVar[int] = ...
-    CHARGE: ClassVar[int] = ...
-    PASTE: ClassVar[int] = ...
-    BELL: ClassVar[int] = ...
-    KEYBOARD: ClassVar[int] = ...
     GPS: ClassVar[int] = ...
-    FILE: ClassVar[int] = ...
     WIFI: ClassVar[int] = ...
     BATTERY_FULL: ClassVar[int] = ...
     BATTERY_3: ClassVar[int] = ...
     BATTERY_2: ClassVar[int] = ...
     BATTERY_1: ClassVar[int] = ...
     BATTERY_EMPTY: ClassVar[int] = ...
-    USB: ClassVar[int] = ...
-    BLUETOOTH: ClassVar[int] = ...
-    TRASH: ClassVar[int] = ...
-    EDIT: ClassVar[int] = ...
+    WATCH: ClassVar[int] = ...
+    COMPASS: ClassVar[int] = ...
+    CARET_UP: ClassVar[int] = ...
+    CARET_DOWN: ClassVar[int] = ...
     BACKSPACE: ClassVar[int] = ...
-    SD_CARD: ClassVar[int] = ...
     NEW_LINE: ClassVar[int] = ...
+    KEYBOARD: ClassVar[int] = ...
     DUMMY: ClassVar[int] = ...
 
 
@@ -9586,43 +9558,6 @@ class span_t(object):
 
 
 
-class _pinyin_dict_t_type(TypedDict, total=False):
-    py: str = ...
-    py_mb: str = ...
-
-
-
-class pinyin_dict_t(object):
-    """
-    No Docstrings Yet
-    """
-    def __init__(self, args: Optional[_pinyin_dict_t_type] = dict(), /) -> "pinyin_dict_t":
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    __SIZE__: ClassVar[int] = ...
-
-    def py(self, value: str) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    py = property(fset=py)
-
-    def py_mb(self, value: str) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    py_mb = property(fset=py_mb)
-
-
-
-
 class _color16_t_type(TypedDict, total=False):
     blue: int = ...
     green: int = ...
@@ -12726,537 +12661,6 @@ class indev_keypad_t(object):
 
     @last_key.setter
     def last_key(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-
-
-
-class _gd_GIF_type(TypedDict, total=False):
-    fd: "fs_file_t" = ...
-    data: str = ...
-    is_file: int = ...
-    f_rw_p: int = ...
-    anim_start: int = ...
-    width: int = ...
-    height: int = ...
-    depth: int = ...
-    loop_count: int = ...
-    gce: "gd_GCE" = ...
-    palette: "gd_Palette" = ...
-    lct: "gd_Palette" = ...
-    gct: "gd_Palette" = ...
-    plain_text: Callable = ...
-    comment: Callable = ...
-    application: Callable = ...
-    fx: int = ...
-    fy: int = ...
-    fw: int = ...
-    fh: int = ...
-    bgindex: int = ...
-    canvas: Union[str, List[int]] = ...
-    frame: Union[str, List[int]] = ...
-
-
-
-class gd_GIF(object):
-    """
-    No Docstrings Yet
-    """
-    def __init__(self, args: Optional[_gd_GIF_type] = dict(), /) -> "gd_GIF":
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    __SIZE__: ClassVar[int] = ...
-
-    def render_frame(self, buffer: Union[str, List[int]], /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_frame(self, /) -> int:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def rewind(self, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def close_gif(self, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    @property
-    def fd(self) -> "fs_file_t":
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @fd.setter
-    def fd(self, value: "fs_file_t") -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def data(self) -> str:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @data.setter
-    def data(self, value: str) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def is_file(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @is_file.setter
-    def is_file(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def f_rw_p(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @f_rw_p.setter
-    def f_rw_p(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def anim_start(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @anim_start.setter
-    def anim_start(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def width(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @width.setter
-    def width(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def height(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @height.setter
-    def height(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def depth(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @depth.setter
-    def depth(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def loop_count(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @loop_count.setter
-    def loop_count(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def gce(self) -> "gd_GCE":
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @gce.setter
-    def gce(self, value: "gd_GCE") -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def palette(self) -> "gd_Palette":
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @palette.setter
-    def palette(self, value: "gd_Palette") -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def lct(self) -> "gd_Palette":
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @lct.setter
-    def lct(self, value: "gd_Palette") -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def gct(self) -> "gd_Palette":
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @gct.setter
-    def gct(self, value: "gd_Palette") -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def plain_text(self) -> Callable:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @plain_text.setter
-    def plain_text(self, value: Callable) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def comment(self) -> Callable:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @comment.setter
-    def comment(self, value: Callable) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def application(self) -> Callable:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @application.setter
-    def application(self, value: Callable) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def fx(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @fx.setter
-    def fx(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def fy(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @fy.setter
-    def fy(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def fw(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @fw.setter
-    def fw(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def fh(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @fh.setter
-    def fh(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def bgindex(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @bgindex.setter
-    def bgindex(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def canvas(self) -> Union[str, List[int]]:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @canvas.setter
-    def canvas(self, value: Union[str, List[int]]) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def frame(self) -> Union[str, List[int]]:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @frame.setter
-    def frame(self, value: Union[str, List[int]]) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-
-
-
-class _gd_GCE_type(TypedDict, total=False):
-    delay: int = ...
-    tindex: int = ...
-    disposal: int = ...
-    input: int = ...
-    transparency: int = ...
-
-
-
-class gd_GCE(object):
-    """
-    No Docstrings Yet
-    """
-    def __init__(self, args: Optional[_gd_GCE_type] = dict(), /) -> "gd_GCE":
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    __SIZE__: ClassVar[int] = ...
-
-    @property
-    def delay(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @delay.setter
-    def delay(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def tindex(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @tindex.setter
-    def tindex(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def disposal(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @disposal.setter
-    def disposal(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def input(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @input.setter
-    def input(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def transparency(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @transparency.setter
-    def transparency(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-
-
-
-class _gd_Palette_type(TypedDict, total=False):
-    size: int = ...
-    colors: List[int] = ...
-
-
-
-class gd_Palette(object):
-    """
-    No Docstrings Yet
-    """
-    def __init__(self, args: Optional[_gd_Palette_type] = dict(), /) -> "gd_Palette":
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    __SIZE__: ClassVar[int] = ...
-
-    @property
-    def size(self) -> int:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @size.setter
-    def size(self, value: int) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-
-    @property
-    def colors(self) -> List[int]:
-       """
-       No Docstrings Yet
-       """ 
-       ...
-
-    @colors.setter
-    def colors(self, value: List[int]) -> None:
         """
         No Docstrings Yet
         """
@@ -18869,117 +18273,6 @@ class buttonmatrix(obj):
         """
         ...
     
-    def get_popovers(self, /) -> bool:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-
-class calendar(obj):
-    """
-    No Docstrings Yet
-    """
-    def __init__(self, parent: "obj", /) -> "calendar":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_today_date(self, year: int, month: int, day: int, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_showed_date(self, time: int, delay: int, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_highlighted_dates(self, highlighted: List["calendar"], date_num: int, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_day_names(self, day_names: List[str], /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_btnmatrix(self, /) -> "obj":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_today_date(self, /) -> "calendar":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_showed_date(self, /) -> "calendar":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_highlighted_dates(self, /) -> "calendar":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_highlighted_dates_num(self, /) -> int:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_pressed_date(self, date: "calendar", /) -> "result_t":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def header_dropdown_set_year_list(self, text: str, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-
-class calendar_header_arrow(obj):
-    """
-    No Docstrings Yet
-    """
-    def __init__(self, parent: "obj", /) -> "calendar_header_arrow":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-
-class calendar_header_dropdown(obj):
-    """
-    No Docstrings Yet
-    """
-    def __init__(self, parent: "obj", /) -> "calendar_header_dropdown":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def header_dropdown_set_year_list(self, text: str, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
 
 class canvas(obj):
     """
@@ -19512,91 +18805,6 @@ class imagebutton(obj):
         ...
     
     def get_src_right(self, state: "imagebutton", /) -> Any:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-
-class keyboard(obj):
-    """
-    No Docstrings Yet
-    """
-    class MODE(object):
-        """
-        No Docstrings Yet
-        """
-        TEXT_LOWER: ClassVar[int] = ...
-        TEXT_UPPER: ClassVar[int] = ...
-        SPECIAL: ClassVar[int] = ...
-        NUMBER: ClassVar[int] = ...
-        USER_1: ClassVar[int] = ...
-        USER_2: ClassVar[int] = ...
-        USER_3: ClassVar[int] = ...
-        USER_4: ClassVar[int] = ...
-    
-
-    def __init__(self, parent: "obj", /) -> "keyboard":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_map_array(self, /) -> List[str]:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_selected_button(self, /) -> int:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_button_text(self, btn_id: int, /) -> str:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_textarea(self, parent: "obj", /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_mode(self, mode: "keyboard", /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_popovers(self, antialias: bool, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_map(self, mode: "keyboard", map: List[str], ctrl_map: List["buttonmatrix"], /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_textarea(self, /) -> "obj":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_mode(self, /) -> "keyboard":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def def_event_cb(self, /) -> None:
         """
         No Docstrings Yet
         """
@@ -20953,156 +20161,6 @@ class win(obj):
         ...
     
 
-class ime_pinyin(obj):
-    """
-    No Docstrings Yet
-    """
-    class PINYIN_MODE(object):
-        """
-        No Docstrings Yet
-        """
-        K26: ClassVar[int] = ...
-        K9: ClassVar[int] = ...
-        K9_NUMBER: ClassVar[int] = ...
-    
-
-    def __init__(self, parent: "obj", /) -> "ime_pinyin":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def pinyin_set_keyboard(self, parent: "obj", /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def pinyin_set_dict(self, dict: "pinyin_dict_t", /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def pinyin_set_mode(self, mode: "ime_pinyin", /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def pinyin_get_kb(self, /) -> "obj":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def pinyin_get_cand_panel(self, /) -> "obj":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def pinyin_get_dict(self, /) -> "pinyin_dict_t":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-
-class barcode(obj):
-    """
-    No Docstrings Yet
-    """
-    def __init__(self, parent: "obj", /) -> "barcode":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_dark_color(self, color: "color_t", /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_light_color(self, color: "color_t", /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_scale(self, scale: int, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_direction(self, dir: "dir_t", /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def update(self, data: str, /) -> "result_t":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_dark_color(self, /) -> "color_t":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_light_color(self, /) -> "color_t":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def get_scale(self, /) -> int:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-
-class gif(obj):
-    """
-    No Docstrings Yet
-    """
-    def __init__(self, parent: "obj", /) -> "gif":
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def set_src(self, src: Any, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def restart(self, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def pause(self, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-    def resume(self, /) -> None:
-        """
-        No Docstrings Yet
-        """
-        ...
-    
-
 class qrcode(obj):
     """
     No Docstrings Yet
@@ -21180,24 +20238,6 @@ class buttonmatrix_class(object):
     """
     ...
 
-class calendar_class(object):
-    """
-    No Docstrings Yet
-    """
-    ...
-
-class calendar_header_arrow_class(object):
-    """
-    No Docstrings Yet
-    """
-    ...
-
-class calendar_header_dropdown_class(object):
-    """
-    No Docstrings Yet
-    """
-    ...
-
 class canvas_class(object):
     """
     No Docstrings Yet
@@ -21223,12 +20263,6 @@ class dropdown_class(object):
     ...
 
 class imagebutton_class(object):
-    """
-    No Docstrings Yet
-    """
-    ...
-
-class keyboard_class(object):
     """
     No Docstrings Yet
     """
@@ -21360,24 +20394,6 @@ class win_class(object):
     """
     ...
 
-class ime_pinyin_class(object):
-    """
-    No Docstrings Yet
-    """
-    ...
-
-class barcode_class(object):
-    """
-    No Docstrings Yet
-    """
-    ...
-
-class gif_class(object):
-    """
-    No Docstrings Yet
-    """
-    ...
-
 class qrcode_class(object):
     """
     No Docstrings Yet
@@ -21388,10 +20404,58 @@ class qrcode_class(object):
 color_filter_shade: "color_filter_dsc_t" = ...
 cache_class_lru_rb_count: "cache_class_t" = ...
 cache_class_lru_rb_size: "cache_class_t" = ...
-font_montserrat_12: "font_t" = ...
 font_montserrat_14: "font_t" = ...
 font_montserrat_16: "font_t" = ...
+font_montserrat_18: "font_t" = ...
+font_montserrat_20: "font_t" = ...
+font_montserrat_22: "font_t" = ...
+font_montserrat_24: "font_t" = ...
+font_montserrat_26: "font_t" = ...
+font_montserrat_28: "font_t" = ...
+font_montserrat_30: "font_t" = ...
+font_montserrat_36: "font_t" = ...
+font_montserrat_40: "font_t" = ...
+font_montserrat_42: "font_t" = ...
+font_montserrat_44: "font_t" = ...
+font_montserrat_46: "font_t" = ...
+font_montserrat_48: "font_t" = ...
 style_const_prop_id_inv: "_mp_int_wrapper" = ...
+ex_arrow: "image" = ...
+ex_bolt_solid: "image" = ...
+ex_book_bookmark_solid: "image" = ...
+ex_calib: "image" = ...
+ex_caret_up: "image" = ...
+ex_circle_xmark_solid: "image" = ...
+ex_clock_rotate_left_solid: "image" = ...
+ex_clock_solid: "image" = ...
+ex_compass: "image" = ...
+ex_compass_solid: "image" = ...
+ex_compass_tri: "image" = ...
+ex_dive: "image" = ...
+ex_e: "image" = ...
+ex_free_depth: "image" = ...
+ex_free_icon: "image" = ...
+ex_free_session: "image" = ...
+ex_free_surface: "image" = ...
+ex_free_time: "image" = ...
+ex_gear_solid: "image" = ...
+ex_kit_medical_solid: "image" = ...
+ex_logo_80: "image" = ...
+ex_logot_140: "image" = ...
+ex_n: "image" = ...
+ex_nosignal: "image" = ...
+ex_oxygen_tank: "image" = ...
+ex_s: "image" = ...
+ex_stopwatch_solid: "image" = ...
+ex_temperature_half_solid: "image" = ...
+ex_updown: "image" = ...
+ex_w: "image" = ...
+ex_watch_face: "image" = ...
+ex_watch_hands_hour: "image" = ...
+ex_watch_hands_min: "image" = ...
+ex_watch_handsw: "image" = ...
+ex_watch_handsy: "image" = ...
+ex_yellow_top: "image" = ...
 _nesting: "_mp_int_wrapper" = ...
 
 def memzero(dst: Any, len: int, /) -> None:
@@ -22710,20 +21774,6 @@ def bin_decoder_close(decoder: "image", dsc: "image", /) -> None:
     ...
 
 
-def bmp_init() -> None:
-    """
-    No Docstrings Yet
-    """
-    ...
-
-
-def bmp_deinit() -> None:
-    """
-    No Docstrings Yet
-    """
-    ...
-
-
 def lodepng_init() -> None:
     """
     No Docstrings Yet
@@ -22732,34 +21782,6 @@ def lodepng_init() -> None:
 
 
 def lodepng_deinit() -> None:
-    """
-    No Docstrings Yet
-    """
-    ...
-
-
-def gd_open_gif_file(fname: str, /) -> "gd_GIF":
-    """
-    No Docstrings Yet
-    """
-    ...
-
-
-def gd_open_gif_data(data: Any, /) -> "gd_GIF":
-    """
-    No Docstrings Yet
-    """
-    ...
-
-
-def tjpgd_init() -> None:
-    """
-    No Docstrings Yet
-    """
-    ...
-
-
-def tjpgd_deinit() -> None:
     """
     No Docstrings Yet
     """

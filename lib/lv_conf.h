@@ -187,12 +187,12 @@ extern void *mp_lv_roots;
 
 	#define LV_DRAW_SW_SUPPORT_RGB565		1
 	#define LV_DRAW_SW_SUPPORT_RGB565A8		1
-	#define LV_DRAW_SW_SUPPORT_RGB888		1
-	#define LV_DRAW_SW_SUPPORT_XRGB8888		1
-	#define LV_DRAW_SW_SUPPORT_ARGB8888		1
-	#define LV_DRAW_SW_SUPPORT_L8			1
-	#define LV_DRAW_SW_SUPPORT_AL88			1
-	#define LV_DRAW_SW_SUPPORT_A8			1
+	#define LV_DRAW_SW_SUPPORT_RGB888		0
+	#define LV_DRAW_SW_SUPPORT_XRGB8888		0
+	#define LV_DRAW_SW_SUPPORT_ARGB8888		0
+	#define LV_DRAW_SW_SUPPORT_L8			0
+	#define LV_DRAW_SW_SUPPORT_AL88			0
+	#define LV_DRAW_SW_SUPPORT_A8			0
 
 	/* Set the number of draw unit.
      * > 1 requires an operating system enabled in `LV_USE_OS`
@@ -497,25 +497,25 @@ extern void *mp_lv_roots;
  *https://fonts.google.com/specimen/Montserrat*/
 #define LV_FONT_MONTSERRAT_8  0
 #define LV_FONT_MONTSERRAT_10 0
-#define LV_FONT_MONTSERRAT_12 1
+#define LV_FONT_MONTSERRAT_12 0
 #define LV_FONT_MONTSERRAT_14 1
 #define LV_FONT_MONTSERRAT_16 1
-#define LV_FONT_MONTSERRAT_18 0
-#define LV_FONT_MONTSERRAT_20 0
-#define LV_FONT_MONTSERRAT_22 0
-#define LV_FONT_MONTSERRAT_24 0
-#define LV_FONT_MONTSERRAT_26 0
-#define LV_FONT_MONTSERRAT_28 0
-#define LV_FONT_MONTSERRAT_30 0
+#define LV_FONT_MONTSERRAT_18 1
+#define LV_FONT_MONTSERRAT_20 1
+#define LV_FONT_MONTSERRAT_22 1
+#define LV_FONT_MONTSERRAT_24 1
+#define LV_FONT_MONTSERRAT_26 1
+#define LV_FONT_MONTSERRAT_28 1
+#define LV_FONT_MONTSERRAT_30 1
 #define LV_FONT_MONTSERRAT_32 0
 #define LV_FONT_MONTSERRAT_34 0
-#define LV_FONT_MONTSERRAT_36 0
+#define LV_FONT_MONTSERRAT_36 1
 #define LV_FONT_MONTSERRAT_38 0
-#define LV_FONT_MONTSERRAT_40 0
-#define LV_FONT_MONTSERRAT_42 0
-#define LV_FONT_MONTSERRAT_44 0
-#define LV_FONT_MONTSERRAT_46 0
-#define LV_FONT_MONTSERRAT_48 0
+#define LV_FONT_MONTSERRAT_40 1
+#define LV_FONT_MONTSERRAT_42 1
+#define LV_FONT_MONTSERRAT_44 1
+#define LV_FONT_MONTSERRAT_46 1
+#define LV_FONT_MONTSERRAT_48 1
 
 /*Demonstrate special features*/
 #define LV_FONT_MONTSERRAT_28_COMPRESSED 0  /*bpp = 3*/
@@ -607,7 +607,7 @@ extern void *mp_lv_roots;
 
 #define LV_USE_BUTTONMATRIX  1
 
-#define LV_USE_CALENDAR   1
+#define LV_USE_CALENDAR   0
 #if LV_USE_CALENDAR
     #define LV_CALENDAR_WEEK_STARTS_MONDAY 0
     #if LV_CALENDAR_WEEK_STARTS_MONDAY
@@ -634,7 +634,7 @@ extern void *mp_lv_roots;
 
 #define LV_USE_IMAGEBUTTON     1
 
-#define LV_USE_KEYBOARD   1
+#define LV_USE_KEYBOARD   0
 
 #define LV_USE_LABEL      1
 #if LV_USE_LABEL
@@ -790,18 +790,18 @@ extern void *mp_lv_roots;
 #define LV_USE_LIBPNG 0
 
 /*BMP decoder library*/
-#define LV_USE_BMP 1
+#define LV_USE_BMP 0
 
 /* JPG + split JPG decoder library.
  * Split JPG is a custom format optimized for embedded systems. */
-#define LV_USE_TJPGD 1
+#define LV_USE_TJPGD 0
 
 /* libjpeg-turbo decoder library.
  * Supports complete JPEG specifications and high-performance JPEG decoding. */
 #define LV_USE_LIBJPEG_TURBO 0
 
 /*GIF decoder library*/
-#define LV_USE_GIF 1
+#define LV_USE_GIF 0
 #if LV_USE_GIF
 /*GIF decoder accelerate*/
 #define LV_GIF_CACHE_DECODE_DATA 0
@@ -818,7 +818,7 @@ extern void *mp_lv_roots;
 #define LV_USE_QRCODE 1
 
 /*Barcode code library*/
-#define LV_USE_BARCODE 1
+#define LV_USE_BARCODE 0
 
 /*FreeType library*/
 #define LV_USE_FREETYPE MICROPY_FREETYPE
@@ -947,7 +947,7 @@ extern void *mp_lv_roots;
 
 /*1: Enable Pinyin input method*/
 /*Requires: lv_keyboard*/
-#define LV_USE_IME_PINYIN 1
+#define LV_USE_IME_PINYIN 0
 #if LV_USE_IME_PINYIN
     /*1: Use default thesaurus*/
     /*If you do not use the default thesaurus, be sure to use `lv_ime_pinyin` after setting the thesauruss*/
