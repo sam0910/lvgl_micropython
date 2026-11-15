@@ -298,3 +298,11 @@ changes:
    generator in `gen/`, the replacement files in `micropy_updates/esp32/`, and
    the string patches applied by the `update_*()` functions in
    `builder/esp32.py`.
+
+## 9. Build commands
+```
+python3 make.py esp32 clean BOARD="ESP32_GENERIC_S3" BOARD_VARIANT="SPIRAM_OCT" \
+    --flash-size="16" --ota \
+    --partition-size="4194304" --skip-partition-resize \
+    DISPLAY="st7789" INDEV="ft6x36" 
+```
