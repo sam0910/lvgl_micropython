@@ -379,7 +379,7 @@ class DisplayDriver:
         return self._disp_drv.get_event_dsc(index)
 
     def delete_event(self, index):
-        return self._disp_drv.delete_event(index)
+        return self._disp_drv.remove_event(index)
 
     def send_event(self, code, param):
         return self._disp_drv.send_event(code, param)

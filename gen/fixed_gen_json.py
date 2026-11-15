@@ -39,6 +39,11 @@ pycparser_monkeypatch.get_typedef_docs = dummy_doc
 pycparser_monkeypatch.get_macro_docs = dummy_doc
 pycparser_monkeypatch.get_macros = dummy_list
 
+# LVGL's Enum.to_dict() formats values with hex(value)[2:], which breaks on
+# negative enum values (LV_COORD_MIN in LVGL 9.6). Shadow hex() in that module
+# with a 32 bit two's complement version.
+pycparser_monkeypatch.hex = lambda value: hex(value & 0xFFFFFFFF if value < 0 else value)
+
 
 def run(lvgl_config_path, target_header, filter_private):
 
