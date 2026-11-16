@@ -4,7 +4,8 @@ This folder holds every file I changed **by hand** in this repo and its
 submodules, so the settings survive when `lib/micropython` or `lib/lvgl` is
 moved to a newer version (or when upstream `lvgl_micropython` is merged in).
 
-Saved against: **MicroPython v1.29.0**, **LVGL v9.6.0**, repo commit `bee8d0b`.
+Saved against: **MicroPython master `350908a`** (1.30.0-preview), **LVGL v9.6.0**.
+`lv_conf.h.patch` is relative to `upstream/main` (lvgl-micropython).
 
 ## What is saved
 
@@ -156,7 +157,7 @@ p='$B/sdkconfig.base'
 s=open(p).read().replace('\nCONFIG_FREERTOS_INTERRUPT_BACKTRACE=n\nCONFIG_FREERTOS_IDLE_TASK_STACKSIZE=4096\n','',1)
 open('UPSTREAM/files/'+p,'w').write(s)"
 
-git diff --full-index lib/lv_conf.h > UPSTREAM/patches/lv_conf.h.patch
+git diff --full-index upstream/main -- lib/lv_conf.h > UPSTREAM/patches/lv_conf.h.patch
 cp $B/sdkconfig.base /tmp/sdkconfig.base.bak
 cp UPSTREAM/files/$B/sdkconfig.base $B/sdkconfig.base
 git -C lib/micropython diff --full-index -- ports/esp32/boards > UPSTREAM/patches/micropython.patch

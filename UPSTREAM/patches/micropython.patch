@@ -31,10 +31,10 @@ index c974b0c7e61fe634c8cfb8af23abd3e12252bb55..275c26a8517e367154afdf8988fd7516
 +    MICROPY_HW_BOARD_NAME="STELLA ESP32S3 with Octal-SPIRAM"
  )
 diff --git a/ports/esp32/boards/sdkconfig.base b/ports/esp32/boards/sdkconfig.base
-index 97f3e45ec75499f74df012878476323ba6319373..83f66a983c16e6fb0c7d90827915aad40d3de269 100644
+index 6c2198260f52ff3666988b4115e18afb91284004..757948964195653d6a28aac04ae5166b28c43fdd 100644
 --- a/ports/esp32/boards/sdkconfig.base
 +++ b/ports/esp32/boards/sdkconfig.base
-@@ -157,3 +157,26 @@ CONFIG_LWIP_MAX_ACTIVE_TCP=12
+@@ -156,3 +156,26 @@ CONFIG_LWIP_MAX_ACTIVE_TCP=12
  # Enable new I2C slave API, and disable conflict check.
  CONFIG_I2C_SKIP_LEGACY_CONFLICT_CHECK=y
  CONFIG_I2C_ENABLE_SLAVE_DRIVER_VERSION_2=y
