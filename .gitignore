@@ -116,3 +116,4 @@ ext_mod/lvgl/yacctab.py
 main.py
 # Generated stubs
 lvgl.pyi
+original_repo

@@ -306,3 +306,6 @@ python3 make.py esp32 clean BOARD="ESP32_GENERIC_S3" BOARD_VARIANT="SPIRAM_OCT" 
     --partition-size="4194304" --skip-partition-resize \
     DISPLAY="st7789" INDEV="ft6x36" 
 ```
+```
+DO_CLEAN=1 DO_FLASH=1 DO_ERASE=0 bash /Volumes/ORICO/CSMB/firmware/build.sh
+```

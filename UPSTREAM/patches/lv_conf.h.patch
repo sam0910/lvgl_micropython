@@ -1,0 +1,204 @@
+diff --git a/lib/lv_conf.h b/lib/lv_conf.h
+index 4f97f7283d7332ed8f7424e30877e53123173164..91ad093f27473e353f28a12a53acc3e51e6fb974 100644
+--- a/lib/lv_conf.h
++++ b/lib/lv_conf.h
+@@ -2,7 +2,7 @@
+ 
+ #ifndef __MICROPY_CONFIG__
+ #define __MICROPY_CONFIG__
+-#define LV_STDLIB_MPY 254
++#define LV_STDLIB_MPY 254 // very simple implementation, see ext_mod/lvgl/mem_core.c
+ 
+ #ifndef MICROPY_FREETYPE
+     #define MICROPY_FREETYPE  0
+@@ -23,10 +23,10 @@
+     #define MICROPY_TINY_TTF  0
+ #endif
+ #ifndef MICROPY_CACHE_SIZE
+-    #define MICROPY_CACHE_SIZE  0
++    #define MICROPY_CACHE_SIZE  307200 // one image of 320x240 pixels at 4 bytes per pixel
+ #endif
+ #ifndef MICROPY_COLOR_DEPTH
+-    #define MICROPY_COLOR_DEPTH  32
++    #define MICROPY_COLOR_DEPTH  16
+ #endif
+ #ifndef MICROPY_FLOAT
+     #define MICROPY_FLOAT  0
+@@ -316,23 +316,23 @@ extern void *mp_lv_roots;
+ 
+     /*1: Enable print timestamp;
+      *0: Disable print timestamp*/
+-    #define LV_LOG_USE_TIMESTAMP 1
++    #define LV_LOG_USE_TIMESTAMP 0
+ 
+     /*1: Print file and line number of the log;
+      *0: Do not print file and line number of the log*/
+-    #define LV_LOG_USE_FILE_LINE 1
++    #define LV_LOG_USE_FILE_LINE 0
+ 
+ 
+     /*Enable/disable LV_LOG_TRACE in modules that produces a huge number of logs*/
+-    #define LV_LOG_TRACE_MEM        1
+-    #define LV_LOG_TRACE_TIMER      1
+-    #define LV_LOG_TRACE_INDEV      1
+-    #define LV_LOG_TRACE_DISP_REFR  1
+-    #define LV_LOG_TRACE_EVENT      1
+-    #define LV_LOG_TRACE_OBJ_CREATE 1
+-    #define LV_LOG_TRACE_LAYOUT     1
+-    #define LV_LOG_TRACE_ANIM       1
+-    #define LV_LOG_TRACE_CACHE      1
++    #define LV_LOG_TRACE_MEM        0
++    #define LV_LOG_TRACE_TIMER      0
++    #define LV_LOG_TRACE_INDEV      0
++    #define LV_LOG_TRACE_DISP_REFR  0
++    #define LV_LOG_TRACE_EVENT      0
++    #define LV_LOG_TRACE_OBJ_CREATE 0
++    #define LV_LOG_TRACE_LAYOUT     0
++    #define LV_LOG_TRACE_ANIM       0
++    #define LV_LOG_TRACE_CACHE      0
+ 
+ #endif  /*LV_USE_LOG*/
+ 
+@@ -344,7 +344,7 @@ extern void *mp_lv_roots;
+  *If LV_USE_LOG is enabled an error message will be printed on failure*/
+ #define LV_USE_ASSERT_NULL          1   /*Check if the parameter is NULL. (Very fast, recommended)*/
+ #define LV_USE_ASSERT_MALLOC        1   /*Checks is the memory is successfully allocated or no. (Very fast, recommended)*/
+-#define LV_USE_ASSERT_STYLE         0   /*Check if the styles are properly initialized. (Very fast, recommended)*/
++#define LV_USE_ASSERT_STYLE         1   /*Check if the styles are properly initialized. (Very fast, recommended)*/
+ #define LV_USE_ASSERT_MEM_INTEGRITY 0   /*Check the integrity of `lv_mem` after critical operations. (Slow)*/
+ #define LV_USE_ASSERT_OBJ           0   /*Check the object's type and existence (e.g. not deleted). (Slow)*/
+ 
+@@ -385,7 +385,7 @@ extern void *mp_lv_roots;
+ 
+ /*Default number of image header cache entries. The cache is used to store the headers of images
+  *The main logic is like `LV_CACHE_DEF_SIZE` but for image headers.*/
+-#define LV_IMAGE_HEADER_CACHE_DEF_CNT 0
++#define LV_IMAGE_HEADER_CACHE_DEF_CNT 64
+ 
+ /*Number of stops allowed per gradient. Increase this to allow more stops.
+  *This adds (sizeof(lv_color_t) + 1) bytes per additional stop*/
+@@ -413,11 +413,15 @@ extern void *mp_lv_roots;
+ #define LV_USE_OBJ_ID_BUILTIN   1
+ 
+ /*Use obj property set/get API*/
+-#define LV_USE_OBJ_PROPERTY 0
++#define LV_USE_OBJ_PROPERTY 1
+ 
+ /*Enable property name support*/
+ #define LV_USE_OBJ_PROPERTY_NAME 1
+ 
++/*Enable object names. LVGL 9.6 needs this when LV_USE_OBJ_PROPERTY is 1:
++ *lv_obj_properties.c uses LV_PROPERTY_OBJ_NAME without checking LV_USE_OBJ_NAME*/
++#define LV_USE_OBJ_NAME 1
++
+ /* VG-Lite Simulator */
+ /*Requires: LV_USE_THORVG_INTERNAL or LV_USE_THORVG_EXTERNAL */
+ #define LV_USE_VG_LITE_THORVG  0
+@@ -495,8 +499,8 @@ extern void *mp_lv_roots;
+ #define LV_FONT_MONTSERRAT_8  0
+ #define LV_FONT_MONTSERRAT_10 0
+ #define LV_FONT_MONTSERRAT_12 1
+-#define LV_FONT_MONTSERRAT_14 1
+-#define LV_FONT_MONTSERRAT_16 1
++#define LV_FONT_MONTSERRAT_14 0
++#define LV_FONT_MONTSERRAT_16 0
+ #define LV_FONT_MONTSERRAT_18 0
+ #define LV_FONT_MONTSERRAT_20 0
+ #define LV_FONT_MONTSERRAT_22 0
+@@ -527,10 +531,9 @@ extern void *mp_lv_roots;
+ /*Optionally declare custom fonts here.
+  *You can use these fonts as default font too and they will be available globally.
+  *E.g. #define LV_FONT_CUSTOM_DECLARE   LV_FONT_DECLARE(my_font_1) LV_FONT_DECLARE(my_font_2)*/
+-#define LV_FONT_CUSTOM_DECLARE
+-
++#include "my_fonts.h"
+ /*Always set a default font*/
+-#define LV_FONT_DEFAULT &lv_font_montserrat_14
++#define LV_FONT_DEFAULT &lv_font_montserrat_12
+ 
+ /*Enable handling large font and/or fonts with a lot of characters.
+  *The limit depends on the font size, font face and bpp.
+@@ -538,7 +541,7 @@ extern void *mp_lv_roots;
+ #define LV_FONT_FMT_TXT_LARGE 0
+ 
+ /*Enables/disables support for compressed fonts.*/
+-#define LV_USE_FONT_COMPRESSED 0
++#define LV_USE_FONT_COMPRESSED 1
+ 
+ /*Enable drawing placeholders when glyph dsc is not found*/
+ #define LV_USE_FONT_PLACEHOLDER 1
+@@ -604,7 +607,7 @@ extern void *mp_lv_roots;
+ 
+ #define LV_USE_BUTTONMATRIX  1
+ 
+-#define LV_USE_CALENDAR   1
++#define LV_USE_CALENDAR   0
+ #if LV_USE_CALENDAR
+     #define LV_CALENDAR_WEEK_STARTS_MONDAY 0
+     #if LV_CALENDAR_WEEK_STARTS_MONDAY
+@@ -681,7 +684,7 @@ extern void *mp_lv_roots;
+ 
+ #define LV_USE_TILEVIEW   1
+ 
+-#define LV_USE_WIN        1
++#define LV_USE_WIN        0
+ 
+ /*==================
+  * THEMES
+@@ -755,9 +758,9 @@ extern void *mp_lv_roots;
+ #endif
+ 
+ /*API for memory-mapped file access. */
+-#define LV_USE_FS_MEMFS 0
++#define LV_USE_FS_MEMFS 1
+ #if LV_USE_FS_MEMFS
+-    #define LV_FS_MEMFS_LETTER '\0'     /*Set an upper cased letter on which the drive will accessible (e.g. 'A')*/
++    #define LV_FS_MEMFS_LETTER 'M'     /*Set an upper cased letter on which the drive will accessible (e.g. 'A')*/
+ #endif
+ 
+ /*API for LittleFs. */
+@@ -787,7 +790,7 @@ extern void *mp_lv_roots;
+ #define LV_USE_LIBPNG 0
+ 
+ /*BMP decoder library*/
+-#define LV_USE_BMP 1
++#define LV_USE_BMP 0
+ 
+ /* JPG + split JPG decoder library.
+  * Split JPG is a custom format optimized for embedded systems. */
+@@ -801,7 +804,7 @@ extern void *mp_lv_roots;
+ #define LV_USE_GIF 1
+ #if LV_USE_GIF
+ /*GIF decoder accelerate*/
+-#define LV_GIF_CACHE_DECODE_DATA 0
++#define LV_GIF_CACHE_DECODE_DATA 1
+ #endif
+ 
+ 
+@@ -936,7 +939,7 @@ extern void *mp_lv_roots;
+     #define LV_IMGFONT_PATH_MAX_LEN 64
+ 
+     /*1: Use img cache to buffer header information*/
+-    #define LV_IMGFONT_USE_IMAGE_CACHE_HEADER 0
++    #define LV_IMGFONT_USE_IMAGE_CACHE_HEADER 1
+ #endif
+ 
+ /*1: Enable an observer pattern implementation*/
+@@ -944,7 +947,7 @@ extern void *mp_lv_roots;
+ 
+ /*1: Enable Pinyin input method*/
+ /*Requires: lv_keyboard*/
+-#define LV_USE_IME_PINYIN 1
++#define LV_USE_IME_PINYIN 0
+ #if LV_USE_IME_PINYIN
+     /*1: Use default thesaurus*/
+     /*If you do not use the default thesaurus, be sure to use `lv_ime_pinyin` after setting the thesauruss*/
+@@ -1067,7 +1070,7 @@ extern void *mp_lv_roots;
+ /* Use OpenGL to open window on PC and handle mouse and keyboard */
+ #define LV_USE_OPENGLES   0
+ #if LV_USE_OPENGLES
+-    #define LV_USE_OPENGLES_DEBUG        1    /* Enable or disable debug for opengles */
++    #define LV_USE_OPENGLES_DEBUG        0    /* Enable or disable debug for opengles */
+ #endif
+ 
+ /*==================

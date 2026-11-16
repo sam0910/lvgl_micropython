@@ -1,0 +1,64 @@
+diff --git a/ports/esp32/boards/ESP32_GENERIC_S3/mpconfigboard.h b/ports/esp32/boards/ESP32_GENERIC_S3/mpconfigboard.h
+index 0eada86a37b194f177764ef54da27bef76655c86..81a7e150493de8734641505da0c47ad8b021f6a2 100644
+--- a/ports/esp32/boards/ESP32_GENERIC_S3/mpconfigboard.h
++++ b/ports/esp32/boards/ESP32_GENERIC_S3/mpconfigboard.h
+@@ -1,6 +1,6 @@
+ #ifndef MICROPY_HW_BOARD_NAME
+ // Can be set by mpconfigboard.cmake.
+-#define MICROPY_HW_BOARD_NAME               "Generic ESP32S3 module"
++#define MICROPY_HW_BOARD_NAME               "STELLA ESP32S3"
+ #endif
+ #define MICROPY_HW_MCU_NAME                 "ESP32-S3"
+ 
+@@ -9,3 +9,7 @@
+ 
+ #define MICROPY_HW_I2C0_SCL                 (9)
+ #define MICROPY_HW_I2C0_SDA                 (8)
++
++#define MICROPY_HW_ENABLE_USBDEV            (0)
++#define MICROPY_HW_USB_CDC                  (0)
++#define MICROPY_HW_ESP_USB_SERIAL_JTAG      (0)
+\ No newline at end of file
+diff --git a/ports/esp32/boards/ESP32_GENERIC_S3/mpconfigvariant_SPIRAM_OCT.cmake b/ports/esp32/boards/ESP32_GENERIC_S3/mpconfigvariant_SPIRAM_OCT.cmake
+index c974b0c7e61fe634c8cfb8af23abd3e12252bb55..275c26a8517e367154afdf8988fd7516d7b331e3 100644
+--- a/ports/esp32/boards/ESP32_GENERIC_S3/mpconfigvariant_SPIRAM_OCT.cmake
++++ b/ports/esp32/boards/ESP32_GENERIC_S3/mpconfigvariant_SPIRAM_OCT.cmake
+@@ -4,5 +4,5 @@ list(APPEND SDKCONFIG_DEFAULTS
+ )
+ 
+ list(APPEND MICROPY_DEF_BOARD
+-    MICROPY_HW_BOARD_NAME="Generic ESP32S3 module with Octal-SPIRAM"
++    MICROPY_HW_BOARD_NAME="STELLA ESP32S3 with Octal-SPIRAM"
+ )
+diff --git a/ports/esp32/boards/sdkconfig.base b/ports/esp32/boards/sdkconfig.base
+index 97f3e45ec75499f74df012878476323ba6319373..83f66a983c16e6fb0c7d90827915aad40d3de269 100644
+--- a/ports/esp32/boards/sdkconfig.base
++++ b/ports/esp32/boards/sdkconfig.base
+@@ -157,3 +157,26 @@ CONFIG_LWIP_MAX_ACTIVE_TCP=12
+ # Enable new I2C slave API, and disable conflict check.
+ CONFIG_I2C_SKIP_LEGACY_CONFLICT_CHECK=y
+ CONFIG_I2C_ENABLE_SLAVE_DRIVER_VERSION_2=y
++
++# CSMB Custom settings --------------
++# Performance-oriented XIP from PSRAM
++CONFIG_SPIRAM_XIP_FROM_PSRAM=y
++CONFIG_IDF_EXPERIMENTAL_FEATURES=y
++CONFIG_COMPILER_OPTIMIZATION_PERF=y
++CONFIG_FREERTOS_HZ=1000
++CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
++CONFIG_ESPTOOLPY_FLASHMODE_QIO=y
++CONFIG_ESPTOOLPY_FLASHFREQ_120M=y
++CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
++CONFIG_SPIRAM_IGNORE_NOTFOUND=n
++CONFIG_SPIRAM_RODATA=y
++CONFIG_SPIRAM_FETCH_INSTRUCTIONS=y
++# SPIRAM Speed 120M, 80M(Stable)
++CONFIG_SPIRAM_MODE_QUAD=n
++CONFIG_SPIRAM_MODE_OCT=y
++CONFIG_SPIRAM_SPEED_120M=y
++# Cache tuning commonly paired with XIP on S3
++CONFIG_ESP32S3_DATA_CACHE_LINE_64B=y
++CONFIG_ESP32S3_INSTRUCTION_CACHE_32KB=y
++CONFIG_ESP32S3_DATA_CACHE_64KB=y
++# CSMB Custom settings --------------
+\ No newline at end of file
