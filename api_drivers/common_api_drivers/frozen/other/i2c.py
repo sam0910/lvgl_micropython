@@ -5,21 +5,24 @@ import machine
 
 class I2C(object):
     class Bus(object):
-
-        def __init__(self, host, scl, sda, freq=400000, use_locks=False):
-            self._bus = machine.I2C(
-                host,
-                scl=machine.Pin(scl),
-                sda=machine.Pin(sda),
-                freq=freq
-            )
+        def __init__(self, host, scl, sda, freq=400000, use_locks=False, timeout=None):
+            # timeout: maximum duration of one hardware I2C transaction, in
+            # microseconds. None keeps machine.I2C's port default (50 ms on
+            # ESP32). Bounding it makes readfrom_mem()/writeto_mem() raise
+            # OSError on a stalled bus instead of blocking longer than the
+            # timeout, so a busy device can't freeze callers for long.
+            if timeout is None:
+                self._bus = machine.I2C(host, scl=machine.Pin(scl), sda=machine.Pin(sda), freq=freq)
+            else:
+                self._bus = machine.I2C(host, scl=machine.Pin(scl), sda=machine.Pin(sda), freq=freq, timeout=timeout)
 
             if use_locks:
                 import _thread
+
                 self._lock = _thread.allocate_lock()
             else:
-                class Lock(object):
 
+                class Lock(object):
                     @staticmethod
                     def acquire():
                         pass
@@ -72,8 +75,7 @@ class I2C(object):
             self._bus.writevto(addr, vector, stop)
 
         def readfrom_mem(self, addr, memaddr, nbytes, addrsize=8):
-            return self._bus.readfrom_mem(addr, memaddr,
-                                          nbytes, addrsize=addrsize)
+            return self._bus.readfrom_mem(addr, memaddr, nbytes, addrsize=addrsize)
 
         def readfrom_mem_into(self, addr, memaddr, buf, addrsize=8):
             self._bus.readfrom_mem_into(addr, memaddr, buf, addrsize=addrsize)
@@ -82,7 +84,6 @@ class I2C(object):
             self._bus.writeto_mem(addr, memaddr, buf, addrsize=addrsize)
 
     class Device(object):
-
         def __init__(self, bus, dev_id, reg_bits=8):
             self._bus = bus
             self.dev_id = dev_id
@@ -99,29 +100,14 @@ class I2C(object):
         def read_mem(self, memaddr, num_bytes=None, buf=None):
             with self._bus:
                 if num_bytes is not None:
-                    return self._bus.readfrom_mem(
-                        self.dev_id,
-                        memaddr,
-                        num_bytes,
-                        addrsize=self._reg_bits
-                    )
+                    return self._bus.readfrom_mem(self.dev_id, memaddr, num_bytes, addrsize=self._reg_bits)
                 else:
-                    self._bus.readfrom_mem_into(
-                        self.dev_id,
-                        memaddr,
-                        buf,
-                        addrsize=self._reg_bits
-                    )
+                    self._bus.readfrom_mem_into(self.dev_id, memaddr, buf, addrsize=self._reg_bits)
                     return
 
         def write_mem(self, memaddr, buf):
             with self._bus:
-                self._bus.writeto_mem(
-                    self.dev_id,
-                    memaddr,
-                    buf,
-                    addrsize=self._reg_bits
-                )
+                self._bus.writeto_mem(self.dev_id, memaddr, buf, addrsize=self._reg_bits)
 
         def read(self, num_bytes=None, buf=None):
             with self._bus:
