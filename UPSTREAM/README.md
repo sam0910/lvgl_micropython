@@ -44,6 +44,20 @@ time, so do **not** copy or patch them:
 
 Run everything from the repo root (`lvgl_micropython/`).
 
+**Steps 1-4 are automated by `UPSTREAM/APPLY.sh`:**
+
+```sh
+UPSTREAM/APPLY.sh v1.30.0 v9.6.1      # MicroPython ref, LVGL ref (tag or branch)
+UPSTREAM/APPLY.sh - release/v9.6      # "-" keeps the current version
+```
+
+It stops if your live settings aren't saved in this folder yet (`FORCE=1` skips
+that check). It then resets and moves the submodules, re-applies both patches,
+lists `lv_conf.h` options the new LVGL template added or removed, and checks
+that your `CONFIG_…` options exist in `lib/esp-idf`. It exits non-zero if
+anything needs fixing by hand. It does not change `builder/esp32.py` or `gen/`,
+and it does not build. The manual steps below are what it does.
+
 ### 1. Reset the submodules to clean upstream files
 
 This throws away all local edits in the submodules. My edits are safe in this
@@ -81,6 +95,8 @@ git -C lib/micropython apply --3way ../../UPSTREAM/patches/micropython.patch
 ```
 
 - No output = applied cleanly.
+- `--3way` stages the result. Run `git -C lib/micropython reset -q` afterwards,
+  otherwise `git diff` (used by step 6 and the refresh script) doesn't show it.
 - `--3way` merges the changes into an upstream file that has moved. If that
   produces conflicts, fix the `<<<<<<<` markers by hand. Use the full copies in
   `UPSTREAM/files/lib/micropython/…` as the reference.
@@ -107,7 +123,8 @@ it. Two cases need work:
   git apply --3way UPSTREAM/patches/lv_conf.h.patch
   ```
 
-  If it conflicts, resolve it against `UPSTREAM/files/lib/lv_conf.h`.
+  Then `git reset -q lib/lv_conf.h` to unstage it. If it conflicts, resolve it
+  against `UPSTREAM/files/lib/lv_conf.h`.
 
 ### 5. Build
 

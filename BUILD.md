@@ -17,50 +17,6 @@ drivers you chose at build time.
 
 ---
 
-## 1. What you need
-
-### Operating system
-
-- **macOS** (Intel or Apple Silicon) or **Linux** (Ubuntu or similar).
-- **Windows is not supported.** `make.py` stops with an error on Windows.
-
-### Tools
-
-macOS:
-
-```sh
-xcode-select --install          # compiler, make and git
-brew install cmake ninja python
-```
-
-Ubuntu / Debian:
-
-```sh
-sudo apt-get update
-sudo apt-get install git build-essential cmake ninja-build \
-                     python3 python3-venv python3-pip libusb-1.0-0-dev
-```
-
-- **Python 3.10 or newer.** The firmware described here was built with
-  Python 3.15.
-- The stock `make` on macOS (GNU Make 3.81) works. You do not need `gmake`.
-
-### Disk space and time
-
-The first build downloads a lot. Plan for about **6 GB free**:
-
-| What | Where | Size |
-|---|---|---|
-| ESP-IDF, MicroPython, LVGL sources | `lib/` in this repo | ~1.3 GB |
-| ESP-IDF toolchains and Python env | `~/.espressif/` | ~3.5 GB |
-| Build output | `lib/micropython/ports/esp32/build-*` | ~0.5 GB |
-
-On an Apple Silicon Mac with a fast connection, the first full build took
-about **11 minutes**, downloads included. Slower machines or connections take
-longer. Later builds skip the downloads and are much faster.
-
----
-
 ## 2. Get the repository
 
 ```sh
@@ -88,39 +44,7 @@ python3 make.py esp32 clean BOARD="ESP32_GENERIC_S3" BOARD_VARIANT="SPIRAM_OCT" 
     --partition-size="4194304" --skip-partition-resize \
     DISPLAY="st7789" INDEV="ft6x36"
 ```
-
-### What each argument means
-
-| Argument | Meaning |
-|---|---|
-| `esp32` | Build target. Must come first. |
-| `clean` | Delete the previous build before building. Optional, see section 6. |
-| `BOARD="ESP32_GENERIC_S3"` | Generic ESP32-S3 module. |
-| `BOARD_VARIANT="SPIRAM_OCT"` | The module has **octal** PSRAM (for example N16R8, N8R8). Leave it out for **quad** PSRAM modules (for example N8R2, N4R2). |
-| `--flash-size="16"` | Flash size in MB. Must match your module. Allowed: 4, 8, 16, 32, 64, 128. |
-| `--ota` | Create two app partitions (`ota_0`, `ota_1`) so you can do over-the-air updates. |
-| `--partition-size="4194304"` | Size of each app partition in bytes. 4194304 = 4 MiB = `0x400000`. |
-| `--skip-partition-resize` | Keep the partition size you gave. Without it, the builder shrinks or grows the app partition to fit the firmware. |
-| `DISPLAY="st7789"` | Freeze the ST7789 display driver into the firmware. |
-| `INDEV="ft6x36"` | Freeze the FT6x36 touch driver into the firmware. |
-
-To use different hardware, change `DISPLAY` and `INDEV`. The available names
-are the folder names in `api_drivers/common_api_drivers/display/` and the file
-names (without `.py`) in `api_drivers/common_api_drivers/indev/`. You can
-repeat `DISPLAY=` and `INDEV=` to include more than one driver. The full list
-of options is in `README.md`, section *Command line syntax/parameters*.
-
-### What happens on the first run
-
-1. Fetches MicroPython v1.29.0, LVGL v9.6.0 and pycparser into `lib/`.
-2. Fetches ESP-IDF v5.5.2 into `lib/esp-idf` and runs its installer. This puts
-   the compilers and a Python virtual environment into `~/.espressif/`.
-3. Fetches MicroPython's own dependencies (mbedtls, micropython-lib, tinyusb,
-   berkeley-db).
-4. Generates the Python bindings for LVGL (`lv_mp.c`, about 1.6 MB of C) from
-   the LVGL headers and `lib/lv_conf.h`.
-5. Compiles everything (about 2,500 files) and links the firmware.
-6. Merges bootloader, partition table and app into one file.
+ 
 
 ### Expected output
 
@@ -159,15 +83,6 @@ The partition layout this command produces (16 MB flash, OTA, 4 MiB apps):
 ---
 
 ## 4. Flash the board
-
-### Find the serial port
-
-- macOS: `ls /dev/cu.*`. The ESP32-S3's native USB shows up as
-  `/dev/cu.usbmodem…`. A USB-UART bridge shows up as `/dev/cu.usbserial…` or
-  `/dev/cu.wchusbserial…`.
-- Linux: usually `/dev/ttyACM0` (native USB) or `/dev/ttyUSB0` (USB-UART). If
-  you get a permission error, add yourself to the `dialout` group
-  (`sudo usermod -aG dialout $USER`) and log in again.
 
 ### Flash
 
@@ -299,13 +214,8 @@ changes:
    the string patches applied by the `update_*()` functions in
    `builder/esp32.py`.
 
-## 9. Build commands
-```
-python3 make.py esp32 clean BOARD="ESP32_GENERIC_S3" BOARD_VARIANT="SPIRAM_OCT" \
-    --flash-size="16" --ota \
-    --partition-size="4194304" --skip-partition-resize \
-    DISPLAY="st7789" INDEV="ft6x36" 
-```
+### Custom fonts and images
+- Build script with custom fonts and images
 ```
 DO_CLEAN=1 DO_FLASH=1 DO_ERASE=0 bash /Volumes/ORICO/CSMB/firmware/build.sh
 ```

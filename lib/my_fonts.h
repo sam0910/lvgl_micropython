@@ -5,17 +5,25 @@
 #define LV_FONT_CUSTOM_DECLARE \
     LV_FONT_DECLARE(lv_font_14_icon) \
     LV_FONT_DECLARE(lv_font_14) \
+    LV_FONT_DECLARE(lv_font_15) \
     LV_FONT_DECLARE(lv_font_16) \
+    LV_FONT_DECLARE(lv_font_17) \
     LV_FONT_DECLARE(lv_font_18) \
+    LV_FONT_DECLARE(lv_font_20) \
+    LV_FONT_DECLARE(lv_font_21_numeric) \
     LV_FONT_DECLARE(lv_font_22) \
     LV_FONT_DECLARE(lv_font_24_numeric) \
+    LV_FONT_DECLARE(lv_font_25_numeric) \
     LV_FONT_DECLARE(lv_font_26) \
+    LV_FONT_DECLARE(lv_font_29_numeric) \
     LV_FONT_DECLARE(lv_font_30) \
     LV_FONT_DECLARE(lv_font_34_numeric) \
+    LV_FONT_DECLARE(lv_font_36_numeric) \
     LV_FONT_DECLARE(lv_font_40) \
     LV_FONT_DECLARE(lv_font_42_numeric) \
     LV_FONT_DECLARE(lv_font_44_numeric) \
     LV_FONT_DECLARE(lv_font_50) \
-    LV_FONT_DECLARE(lv_font_54_numeric)
+    LV_FONT_DECLARE(lv_font_54_numeric) \
+    LV_FONT_DECLARE(lv_font_9)
 
 #endif /* MY_FONTS_H */
